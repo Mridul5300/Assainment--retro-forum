@@ -4,16 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awsam -->
+    <script src="https://kit.fontawesome.com/955b6c3abd.js" crossorigin="anonymous"></script>
     <!-- Tailwind And Daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="container mx-auto">
     <header>
-        
+        <!-- Nav Bar section start-->
+      <section class=" container my-4 mx-auto">
+        <div class="navbar ">
+            <div class="flex-1">
+              <a class="btn btn-ghost text-xl">daisyUI</a>
+            </div>
+            <div class="flex-none">
+              <ul class="menu menu-horizontal px-1 gap-2">
+                <div class="tooltip" data-tip="Home">
+                    <button class="btn rounded-full"><i class="fa-solid fa-house"></i></button>
+                  </div>
+                <div class="tooltip" data-tip="ToolKit">
+                    <button class="btn rounded-full"><i class="fa-solid fa-pen"></i></button>
+                  </div>
+                <div class="tooltip" data-tip="Group">
+                    <button class="btn rounded-full"><i class="fa-solid fa-user-group"></i></button>
+                  </div>
+                <div class="tooltip" data-tip="Flag">
+                    <button class="btn rounded-full"><i class="fa-regular fa-flag"></i></button>
+                  </div>
+                <button class="btn bg-[#797DFC] text-white">Sign In</button>
+              </ul>
+            </div>
+          </div>
+      </section>
+      <!-- Nav bar Section End -->
+       
+      <!-- Banner Section Start -->
+        <section class="container my-8 mx-auto">
+           <div class="bg-[#303146]">
+            <div class="hero min-h-screen bg" style="background-image: url(images/bgbanner.png);">
+                <div class="hero-content flex-col lg:flex-row gap-28">
+                  <div class="">
+                    <h1 class="text-5xl font-bold text-white">Welcome to the <br> ReTro Forum</h1>
+                    <p class="my-4 text-white">Share your favorite opinion and win and wp<br> forum coffee mug!</p>
+                    <label class="input input-bordered flex items-center gap-2 my-5">
+                        <input type="text" class="grow" placeholder="Search here anything" />
+                         <button class="btn bg-[#797DFC] rounded-[46px] ">Search</button>
+                      </label>
+                  </div>
+                    <div class=" rounded-lg w-60 h-30  bg-slate-100 ">
+                     <div class="flex flex-col lg:flex-row lg:gap-4  lg:mx-2 lg:my-3">
+                        <h2>Registered Users</h2>
+                        <span>01</span>
+                     </div>
+                     <div class="flex flex-col lg:flex-row lg:gap-24 lg:mx-2 lg:my-3">
+                        <h2>From</h2>
+                        <span>05</span>  
+                     </div>
+                     <div class="flex flex-col lg:flex-row lg:gap-20 lg:mx-2 lg:my-3">
+                        <h2>Topics</h2>
+                        <span>01</span>  
+                     </div>
+                     <div class="flex flex-col lg:flex-row lg:gap-20 lg:mx-2 lg:my-3">
+                        <h2>Replies</h2>
+                        <span>01</span>  
+                     </div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+           </div>
+        </section>
+      <!-- Banner Section End -->
     </header>
     <main>
-
+        
     </main>
     <footer>
 
