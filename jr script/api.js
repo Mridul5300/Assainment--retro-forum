@@ -38,7 +38,7 @@ const displayFroum = (postes) => {
                 <img src="images/Group 18.png" alt=""><span>${posted.posted_time}</span>
               </div>
             
-            <button onclick="dataloaded('${posted.title}','${posted.view_count}')" class="btn rounded-full"><img src="images/email 1.png" alt=""></button>
+            <button onclick="dataloaded('${posted.title.replace("'","")}','${posted.view_count}')" class="btn rounded-full"><img src="images/email 1.png" alt=""></button>
                 
             </div>
           </div>
@@ -83,14 +83,14 @@ const dataloaded=(title,view) => {
    const div = document.createElement('div')
    div.classList=`flex bg-white  p-3 rounded-xl mt-5`
    div.innerHTML=`
-   <div class="flex bg-white  p-3 rounded-xl mt-5">
-                              <h1 class="text-xs lg:text-xl">${title}</h1>
-                              <div class="flex justify-center items-center gap-1 lg:gap-1">
-                                  <img src="./images/Group 16.png
-                                  " alt="">
-                                  <h1 class="text-xl">${view}</h1>
-                              </div>
-                          </div>
+        <div class="flex bg-white  p-3 rounded-xl mt-5">
+          <h1 class="text-xs lg:text-xl">${title}</h1>
+          <div class="flex justify-center items-center gap-1 lg:gap-1">
+              <img src="./images/Group 16.png
+              " alt="">
+              <h1 class="text-xl">${view}</h1>
+          </div>
+      </div>
    `;
    loadedforum.appendChild(div)
 }
@@ -108,18 +108,21 @@ const latestDisplay = (upadate) => {
           const div = document.createElement('div')
           div.classList = `card card-compact w-96 bg-base-100 shadow-xl`
           div.innerHTML = `
-          <figure><img src="${latest.cover_image}" alt="" /></figure>
+                <figure><img src="${latest.cover_image}" alt="" /></figure>
                   <div class="card-body">
                     <h2>${latest?.author?.posted_date || 'No publish date'}</h2>
                     <h2 class="card-title">${latest.title}</h2>
                     <p>${latest.description}</p>
-                    <div class="">
-                    <h2></h2>
-                      <h2>${latest.author.name}</h2>
-                      <h3>${latest?.author?.designation ||'UnKnown'}</h3>
-                    </div>
-                    </div>
-                  
+                    <div class="flex gap-4">
+                      <div class="w-[44px] h-[44px] rounded-full">
+                      <img class="rounded-full" src="${latest.profile_image}" alt="">
+                      </div>
+                      <div class="">
+                        <h2>${latest.author.name}</h2>
+                        <h3>${latest?.author?.designation ||'UnKnown'}</h3>
+                      </div>
+                      </div>
+                    </div>    
           `;
           latestContainer.appendChild(div)
        });
