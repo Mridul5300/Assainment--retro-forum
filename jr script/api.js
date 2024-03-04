@@ -14,13 +14,13 @@ const displayFroum = (postes) => {
 
      postContianer.textContent = ''
     postes.forEach(posted => {
-        // console.log(posted);
+        console.log(posted);
        const div = document.createElement("div")
         div.classList = `flex flex-col gap-10 my-8 mx-8`
         div.innerHTML = `
         <div class="card card-side bg-base-100 shadow-xl">
         <div class="indicator">
-          <span class="indicator-item badge badge-secondary">${posted?.isActive||'bg-red','bg-green'}</span> 
+           <span class="indicator-item badge ${posted.isActive? 'bg-green-500':'bg-red-500'}"></span> 
           <div class="grid w-24 h-24 bg-base-300 place-items-center"><img src="${posted.image}" alt=""></div>
         </div>
           <div class="card-body">
@@ -102,7 +102,7 @@ const latestLoad =  async () =>{
     latestDisplay (data)
 }
 const latestDisplay = (upadate) => {
-    //    console.log(upadate);
+       console.log(upadate);
        const latestContainer = document.getElementById('latest-container')
        upadate.forEach(latest => {
           const div = document.createElement('div')
@@ -113,16 +113,18 @@ const latestDisplay = (upadate) => {
                     <h2>${latest?.author?.posted_date || 'No publish date'}</h2>
                     <h2 class="card-title">${latest.title}</h2>
                     <p>${latest.description}</p>
-                    <div class=>
-                    <h2>${latest.author.name}</h2>
-                    <h3>${latest?.author?.designation ||'undifined'}</h3>
+                    <div class="">
+                    <h2></h2>
+                      <h2>${latest.author.name}</h2>
+                      <h3>${latest?.author?.designation ||'UnKnown'}</h3>
                     </div>
-                  </div>
+                    </div>
+                  
           `;
           latestContainer.appendChild(div)
        });
 }
-toggleSpiner(false)
+
  latestLoad();
 
 loadFroum();
