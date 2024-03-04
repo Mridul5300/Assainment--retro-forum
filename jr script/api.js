@@ -1,52 +1,87 @@
-const loadFroum = async () => {
-   const responsive = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts")
+const loadFroum = async (categoryName = 'coding') => {
+   const responsive = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`)
     const data = await responsive.json();
      const post = data.posts
     // console.log(data.posts);
-   displayFroum(post)
+        setTimeout(() => {
+          displayFroum(post)
+        },2000)
 }
  
 const displayFroum = (postes) => {
         // console.log(postes);
      const postContianer = document.getElementById('post-container')
+
+     postContianer.textContent = ''
     postes.forEach(posted => {
-        // console.log(posted);
+        console.log(posted);
        const div = document.createElement("div")
-        div.classList = `flex-row lg:flex justify-center gap-2`
+        div.classList = `flex flex-col gap-10 my-8 mx-8`
         div.innerHTML = `
-        <div class="flex-row lg:flex justify-center gap-2 ">
-        <div class="border border-solid   lg:w-[650px]">
-          <div class="flex my-2">
-            <div class="indicator">
-              <span class="indicator-item badge badge-secondary mx-3"></span>
-              <div class="grid w-32 h-32 bg-base-300 place-items-center"><img src="${posted.image}" alt=""></div>
+        <div class="card card-side bg-base-100 shadow-xl">
+        <div class="indicator">
+          <span class="indicator-item badge badge-secondary"></span> 
+          <div class="grid w-24 h-24 bg-base-300 place-items-center"><img src="${posted.image}" alt=""></div>
+        </div>
+          <div class="card-body">
+            <div class="flex gap-2">
+            <h2>#${posted.category}</h2>
+              <h3>Author:${posted.author.name}</h3>
             </div>
-            <div class="flex mx-16 gap-4">
-              <h1>${posted.category}</h1>
-              <h2>Author:${posted.author.name}</h2>
+            <h2 class="card-title">${posted.title}</h2>
+            <p>${posted.description}</p>
+            
+            <div class="card-actions gap-16">
+              <div class="flex gap-2">
+                <img src="images/tabler-icon-message-2.png" alt=""><span>${posted.comment_count}</span>
+                <img src="images/Group 16.png" alt=""><span>${posted.view_count}</span>
+                <img src="images/Group 18.png" alt=""><span>${posted.posted_time}</span>
+              </div>
+                        <div>
+                        <button class=" add-button btn  rounded-full"><img src="images/email 1.png" alt=""></button>
+                      </div>
             </div>
           </div>
-             <h2 class="text-xl mx-28">${posted.title }</h2>
-             <div class="flex gap-4 mx-28 my-4">
-                <img src="images/tabler-icon-message-2.png" alt=""><p>${posted.comment_count}</p>
-                <img src="images/Group 16.png" alt=""><p>${posted.view_count}</p>
-                <img src="images/Group 18.png" alt=""><p>5 min</p>
-                 <button class="btn mx-20 lg:mx-52 rounded-full"><img src="images/email 1.png" alt=""></button>
-             </div>
-            </div>
-            <div>
-              <div class="flex gap-10">
-                <h2>Title</h2>
-                <h3>Mark as read (4)</h3>
-              </div>
-              <div id="tital-container">
-              </div>
-             </div>
-        </div>
-         `;
+        </div>  
+      `;
         postContianer.appendChild(div)
     });
+    toggleSpiner(false);
+
+    postContianer.addEventListener("click", function(event) {
+        if (event.target.classList.parentnode.childnodes) {
+            
+            count++;
+            setInnerText("counting", count); 
+        }
+    });
 }
+let count = 0;
+
+function setInnerText(id, value) {
+document.getElementById(id).innerText = value;
+}
+
+const handelsearch = () => {
+  toggleSpiner(true)
+     const searchFeild = document.getElementById('search-feild')
+        const searchresult = searchFeild.value;
+        console.log(searchresult);
+        loadFroum(searchresult)
+}
+const toggleSpiner = (isloading) => {
+  const loadingSpinner = document.getElementById("load-spiner") 
+
+
+  if(isloading){
+    loadingSpinner.classList.remove('hidden')
+  }
+  else{
+    loadingSpinner.classList.add('hidden')
+  }
+ }
+
+
 const latestLoad =  async () =>{
     const responsive = await fetch (' https://openapi.programming-hero.com/api/retro-forum/latest-posts')
     const data = await responsive.json()
@@ -54,7 +89,7 @@ const latestLoad =  async () =>{
     latestDisplay (data)
 }
 const latestDisplay = (upadate) => {
-       console.log(upadate);
+    //    console.log(upadate);
        const latestContainer = document.getElementById('latest-container')
        upadate.forEach(latest => {
           const div = document.createElement('div')

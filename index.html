@@ -17,7 +17,7 @@
       <section class=" container my-4 mx-auto">
         <div class="navbar ">
             <div class="flex-1">
-              <a class="btn btn-ghost text-xl">daisyUI</a>
+              <a class="btn btn-ghost text-4xl">M<span class="text-orange-300">E</span>T<span class="text-amber-400">R</span>O</a>
             </div>
             <div class="flex-none">
               <ul class="menu menu-horizontal px-1 gap-2">
@@ -46,11 +46,11 @@
             <div class="hero min-h-screen bg" style="background-image: url(images/bgbanner.png);">
                 <div class="hero-content flex-col lg:flex-row gap-28">
                   <div class="">
-                    <h1 class="text-5xl font-bold text-white">Welcome to the <br> ReTro Forum</h1>
+                    <h1 class="text-5xl font-bold text-white">Welcome to the <br>M<span class="text-orange-300">E</span>T<span class="text-amber-400">R</span>O Forum</h1>
                     <p class="my-4 text-white">Share your favorite opinion and win and wp<br> forum coffee mug!</p>
                     <label class="input input-bordered flex items-center gap-2 my-5">
-                        <input type="text" class="grow" placeholder="Search here anything" />
-                         <button class="btn bg-[#797DFC] rounded-[46px] ">Search</button>
+                        <input id="search-feild" type="text" class="grow" placeholder="Search here anything" />
+                         <button onclick="handelsearch()" class="btn bg-[#797DFC] rounded-[46px] ">Search</button>
                       </label>
                   </div>
                     <div class=" rounded-lg w-60 h-30  bg-slate-100 ">
@@ -74,7 +74,6 @@
                   </div>
                 </div>
               </div>
-           </div>
         </section>
       <!-- Banner Section End -->
     </header>
@@ -84,38 +83,45 @@
                     <h2 class="text-4xl font font-black">Let’s Discuss</h2>
                     <p class="">Yes, you can run unit tests and view the results directly within the app. The <br> integrated testing features allow for a streamlined .</p>
                 </div>
-                <div id="post-container" class="my-24">
-                    <div class="flex-row lg:flex justify-center gap-2 ">
-                      <div class="border border-solid   lg:w-[650px]">
-                        <div class="flex my-2">
-                          <div class="indicator">
-                            <span class="indicator-item badge badge-secondary mx-3"></span>
-                            <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
-                          </div>
-                          <div class="flex mx-16 gap-4">
-                            <h1># Music</h1>
-                            <h2>Author : Awlad Hossain</h2>
-                          </div>
-                        </div>
-                           <h2 class="text-xl mx-28">10 Kids Unaware of Their Halloween Costume</h2>
-                           <div class="flex gap-4 mx-28 my-4">
-                              <img src="images/tabler-icon-message-2.png" alt=""><p>560</p>
-                              <img src="images/Group 16.png" alt=""><p>1500</p>
-                              <img src="images/Group 18.png" alt=""><p>5 min</p>
-                               <button class="btn mx-20 lg:mx-52 rounded-full"><img src="images/email 1.png" alt=""></button>
-                           </div>
-                          </div>
-                          <div>
-                            <div class="flex gap-10">
-                              <h2>Title</h2>
-                              <h3>Mark as read (4)</h3>
-                            </div>
-                            <div id="tital-container">
-                            </div>
-                           </div>
+                  <!-- spinner Area -->
+              <div id="load-spiner" class="text-center my-40 hidden">
+                <span class="loading loading-dots loading-lg"></span>
+              </div>
+                <!-- card section -->
+                <div class="flex flex-col lg:flex-row gap-4 lg:gap-24 mt-10 lg:mt-20 ">
+
+                  <div  id="post-container" class=" flex flex-col gap-10">
+                      <div class="add-button">
+                        <button class="a btn  rounded-full"><img src="images/email 1.png" alt=""></button>
                       </div>
-                    </div>
-            </section>
+                  </div>
+                  <br>
+                  <!-- aside section  -->
+                  <div class="bg-gray-100 p-4 rounded-2xl ">
+                      <div class="flex justify-between items-center lg:gap-40  ">
+                          <div>
+                              <h1 class="text-3xl font-bold text-black ">Title</h1>
+                          </div>
+      
+                          <div>
+                              <h1 class="text-xl font-semibold"> Mark as read <span id="counting">0</span></h1>
+                          </div>
+      
+      
+                      </div>
+                      <div id="side-section">
+                          <div class="flex bg-white  p-3 rounded-xl mt-5">
+                              <h1 class="text-xs lg:text-xl">10 Kids Unaware of Their Halloween Costume</h1>
+                              <div class="flex justify-center items-center gap-1 lg:gap-1">
+                                  <img src="./images/eye.png" alt="">
+                                  <h1 class="text-xl">1,568</h1>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </section>
+              
             <!-- 3rd part -->
           <section class="container mx-auto my-9">
                 <div class="flex justify-center bg-[#12132D]">
@@ -143,7 +149,9 @@
     <footer>
          <section class="container mx-auto">
           <footer class="footer footer-center p-10 bg-stone-200 text-base-content rounded">
-            <h2>ReTro</h2>
+          <div class="flex">
+            <h2 class="tex-8x font-bold">M<span class="text-orange-300">E</span>T<span class="text-amber-400">R</span>O</h2>
+          </div>
             <p>Contrary to popular belief, Lorem Ipsum is not simply random text. <br> It has roots in a piece of classical Latin literature from 45 BC</p>
             <!-- <nav class="grid grid-flow-col gap-4">
                <div class="">
@@ -168,3 +176,4 @@
     <script src="jr script/api.js"></script>
 </body>
 </html>
+
