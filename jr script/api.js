@@ -14,7 +14,7 @@ const displayFroum = (postes) => {
 
      postContianer.textContent = ''
     postes.forEach(posted => {
-        console.log(posted);
+        // console.log(posted);
        const div = document.createElement("div")
         div.classList = `flex flex-col gap-10 my-8 mx-8`
         div.innerHTML = `
@@ -37,30 +37,19 @@ const displayFroum = (postes) => {
                 <img src="images/Group 16.png" alt=""><span>${posted.view_count}</span>
                 <img src="images/Group 18.png" alt=""><span>${posted.posted_time}</span>
               </div>
-                        <div>
-                        <button class=" add-button btn  rounded-full"><img src="images/email 1.png" alt=""></button>
-                      </div>
+            
+                        <button onclick="dataloaded('${posted.title}','${posted.view_count}')" class="btn rounded-full"><img src="images/email 1.png" alt=""></button>
+                
             </div>
           </div>
         </div>  
       `;
         postContianer.appendChild(div)
     });
-    toggleSpiner(false);
+  }
 
-    postContianer.addEventListener("click", function(event) {
-        if (event.target.classList.parentnode.childnodes) {
-            
-            count++;
-            setInnerText("counting", count); 
-        }
-    });
-}
-let count = 0;
-
-function setInnerText(id, value) {
-document.getElementById(id).innerText = value;
-}
+  const allbuttton = document.getElementById
+  
 
 const handelsearch = () => {
   toggleSpiner(true)
@@ -81,6 +70,22 @@ const toggleSpiner = (isloading) => {
   }
  }
 
+const dataloaded=(title,view) => {
+  console.log(title,view)
+   const loadedforum =document.getElementById("side-section")
+   const div = document.createElement('div')
+   div.classList=`flex bg-white  p-3 rounded-xl mt-5`
+   div.innerHTML=`
+   <div class="flex bg-white  p-3 rounded-xl mt-5">
+                              <h1 class="text-xs lg:text-xl">${title}</h1>
+                              <div class="flex justify-center items-center gap-1 lg:gap-1">
+                                  <img src="./images/eye.png" alt="">
+                                  <h1 class="text-xl">${view}</h1>
+                              </div>
+                          </div>
+   `;
+   loadedforum.appendChild(div)
+}
 
 const latestLoad =  async () =>{
     const responsive = await fetch (' https://openapi.programming-hero.com/api/retro-forum/latest-posts')
@@ -109,5 +114,7 @@ const latestDisplay = (upadate) => {
           latestContainer.appendChild(div)
        });
 }
-latestLoad();
+toggleSpiner(false)
+ latestLoad();
+
 loadFroum();
