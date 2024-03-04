@@ -20,7 +20,7 @@ const displayFroum = (postes) => {
         div.innerHTML = `
         <div class="card card-side bg-base-100 shadow-xl">
         <div class="indicator">
-          <span class="indicator-item badge badge-secondary"></span> 
+          <span class="indicator-item badge badge-secondary">${posted?.isActive||'bg-red','bg-green'}</span> 
           <div class="grid w-24 h-24 bg-base-300 place-items-center"><img src="${posted.image}" alt=""></div>
         </div>
           <div class="card-body">
@@ -38,7 +38,7 @@ const displayFroum = (postes) => {
                 <img src="images/Group 18.png" alt=""><span>${posted.posted_time}</span>
               </div>
             
-                        <button onclick="dataloaded('${posted.title}','${posted.view_count}')" class="btn rounded-full"><img src="images/email 1.png" alt=""></button>
+            <button onclick="dataloaded('${posted.title}','${posted.view_count}')" class="btn rounded-full"><img src="images/email 1.png" alt=""></button>
                 
             </div>
           </div>
@@ -46,9 +46,10 @@ const displayFroum = (postes) => {
       `;
         postContianer.appendChild(div)
     });
+    toggleSpiner(false)
   }
 
-  const allbuttton = document.getElementById
+  
   
 
 const handelsearch = () => {
@@ -69,6 +70,12 @@ const toggleSpiner = (isloading) => {
     loadingSpinner.classList.add('hidden')
   }
  }
+ let count = 0;
+ const countedData= () => {
+  const countRead = document.getElementById('counting')
+      count +=1
+      countRead.innerText=count
+ }
 
 const dataloaded=(title,view) => {
   console.log(title,view)
@@ -79,7 +86,8 @@ const dataloaded=(title,view) => {
    <div class="flex bg-white  p-3 rounded-xl mt-5">
                               <h1 class="text-xs lg:text-xl">${title}</h1>
                               <div class="flex justify-center items-center gap-1 lg:gap-1">
-                                  <img src="./images/eye.png" alt="">
+                                  <img src="./images/Group 16.png
+                                  " alt="">
                                   <h1 class="text-xl">${view}</h1>
                               </div>
                           </div>
